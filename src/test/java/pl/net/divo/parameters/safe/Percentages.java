@@ -6,26 +6,26 @@ import java.util.Map;
 public class Percentages {
     public static Map<String, Double> getPercentages1() {
         Map<String, Double> percentages = new HashMap<>();
-        percentages.put("1", 10.0);
-        percentages.put("2", 10.0);
-        percentages.put("3", 25.0);
-        percentages.put("4", 25.0);
-        percentages.put("5", 25.0);
-        percentages.put("6",  5.0);
+        percentages.put("PL1", 10.0);
+        percentages.put("PL2", 10.0);
+        percentages.put("FO1", 25.0);
+        percentages.put("FO2", 25.0);
+        percentages.put("FO3", 25.0);
+        percentages.put("FI1",  5.0);
 
         return percentages;
     }
 
     public static Map<String, Double> getPercentages2() {
         Map<String, Double> percentages = new HashMap<>();
-        percentages.put("1", 10.0);
-        percentages.put("2", 10.0);
-        percentages.put("3", 15.0);
-        percentages.put("4", 15.0);
-        percentages.put("5", 15.0);
-        percentages.put("6", 15.0);
-        percentages.put("7", 15.0);
-        percentages.put("8",  5.0);
+        percentages.put("PL1", 10.0);
+        percentages.put("PL2", 10.0);
+        percentages.put("FO1", 15.0);
+        percentages.put("FO2", 15.0);
+        percentages.put("FO3", 15.0);
+        percentages.put("FO4", 15.0);
+        percentages.put("FO5", 15.0);
+        percentages.put("FI1",  5.0);
 
         return percentages;
     }

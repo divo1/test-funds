@@ -1,5 +1,6 @@
 package pl.net.divo;
 
+import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,12 +11,10 @@ import pl.net.divo.parameters.safe.Percentages;
 import pl.net.divo.strategy.InvestStrategy;
 import pl.net.divo.strategy.SafeInvestStrategy;
 
-import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
 public class SafeInvestStrategyTest {
@@ -58,6 +57,6 @@ public class SafeInvestStrategyTest {
     public void testSafeInvest() {
         Map<Fund, Double> percentages = strategy.getPercentages();
         Map<String, Double> parsedPercentage = percentages.entrySet().stream().collect(Collectors.toMap(e -> e.getKey().getID(), Map.Entry::getValue));
-        assertEquals(acceptedPercentages, parsedPercentage);
+        assertThat(acceptedPercentages, Is.is(parsedPercentage));
     }
 }

@@ -1,5 +1,6 @@
 package pl.net.divo;
 
+import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 @RunWith(Parameterized.class)
 public class BalancedInvestStrategyTest {
@@ -57,6 +59,6 @@ public class BalancedInvestStrategyTest {
     public void testSafeInvest() {
         Map<Fund, Double> percentages = strategy.getPercentages();
         Map<String, Double> parsedPercentage = percentages.entrySet().stream().collect(Collectors.toMap(e -> e.getKey().getID(), Map.Entry::getValue));
-        assertEquals(acceptedPercentages, parsedPercentage);
+        assertThat(acceptedPercentages, Is.is(parsedPercentage));
     }
 }
