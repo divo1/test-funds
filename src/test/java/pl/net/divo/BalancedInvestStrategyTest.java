@@ -17,13 +17,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(Parameterized.class)
-public class SafeInvestStrategyTest {
+public class BalancedInvestStrategyTest {
     private InvestStrategy strategy;
 
     private List<Fund> funds = new LinkedList<>();
     private Map<String, Double> acceptedPercentages = new HashMap<>();
 
-    public SafeInvestStrategyTest(List<Fund> funds, Map<String, Double> acceptedPercentages) {
+    public BalancedInvestStrategyTest(List<Fund> funds, Map<String, Double> acceptedPercentages) {
         this.funds = funds;
         this.acceptedPercentages = acceptedPercentages;
     }

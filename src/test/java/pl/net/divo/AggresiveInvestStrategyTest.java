@@ -5,10 +5,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import pl.net.divo.funds.Fund;
-import pl.net.divo.parameters.safe.Funds;
-import pl.net.divo.parameters.safe.Percentages;
+import pl.net.divo.parameters.aggressive.Funds;
+import pl.net.divo.parameters.aggressive.Percentages;
+import pl.net.divo.strategy.AggressiveInvestStrategy;
 import pl.net.divo.strategy.InvestStrategy;
-import pl.net.divo.strategy.SafeInvestStrategy;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -17,13 +17,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(Parameterized.class)
-public class SafeInvestStrategyTest {
+public class AggresiveInvestStrategyTest {
     private InvestStrategy strategy;
 
     private List<Fund> funds = new LinkedList<>();
     private Map<String, Double> acceptedPercentages = new HashMap<>();
 
-    public SafeInvestStrategyTest(List<Fund> funds, Map<String, Double> acceptedPercentages) {
+    public AggresiveInvestStrategyTest(List<Fund> funds, Map<String, Double> acceptedPercentages) {
         this.funds = funds;
         this.acceptedPercentages = acceptedPercentages;
     }
@@ -38,7 +38,7 @@ public class SafeInvestStrategyTest {
 
     @Before
     public void prepareStrategy() {
-        strategy = new SafeInvestStrategy(funds);
+        strategy = new AggressiveInvestStrategy(funds);
     }
 
     @Test
