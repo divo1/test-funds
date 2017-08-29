@@ -3,7 +3,6 @@ package pl.net.divo;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import pl.net.divo.context.FundsContext;
 import pl.net.divo.funds.Fund;
 import pl.net.divo.funds.Kind;
 import pl.net.divo.strategy.InvestStrategy;
@@ -13,13 +12,13 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+
 public class SafeInvestStrategyTest {
-    private FundsContext context;
-    private long amountOfInvest = 10000;
     private InvestStrategy strategy;
 
     private static List<Fund> funds = new LinkedList<>();
@@ -40,16 +39,11 @@ public class SafeInvestStrategyTest {
     @BeforeClass
     public static void prepareAcceptedPercentages() {
         acceptedPercentages.put("1", 0.10);
-        acceptedPercentages.put("1", 0.10);
-        acceptedPercentages.put("1", 0.25);
-        acceptedPercentages.put("1", 0.25);
-        acceptedPercentages.put("1", 0.25);
-        acceptedPercentages.put("1", 0.05);
-    }
-
-    @Before
-    public void prepareContext() {
-        context = new FundsContext();
+        acceptedPercentages.put("2", 0.10);
+        acceptedPercentages.put("3", 0.25);
+        acceptedPercentages.put("4", 0.25);
+        acceptedPercentages.put("5", 0.25);
+        acceptedPercentages.put("6", 0.05);
     }
 
     @Before
@@ -59,8 +53,7 @@ public class SafeInvestStrategyTest {
 
     @Test
     public void testAllKeysExists() {
-        context.setInvestStrategy(strategy);
-        Map<Fund, Double> percentages = context.percentages(amountOfInvest);
+        Map<Fund, Double> percentages = strategy.getPercentages();
 
         assertNotNull(percentages);
         assertEquals(percentages.size(), acceptedPercentages.size());
@@ -68,9 +61,8 @@ public class SafeInvestStrategyTest {
 
     @Test
     public void testSafeInvest() {
-        context.setInvestStrategy(strategy);
-        Map<Fund, Double> percentages = context.percentages(amountOfInvest);
-
-        assertEquals(percentages, acceptedPercentages);
+        Map<Fund, Double> percentages = strategy.getPercentages();
+        Map<String, Double> parsedPercentage = percentages.entrySet().stream().collect(Collectors.toMap(e -> e.getKey().getID(), Map.Entry::getValue));
+        assertEquals(parsedPercentage, acceptedPercentages);
     }
 }
