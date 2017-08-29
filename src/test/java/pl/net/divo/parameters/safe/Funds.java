@@ -31,10 +31,25 @@ public class Funds {
         funds.add(new Fund("3", "Fundusz Zagraniczny 1", Kind.FOREIGN));
         funds.add(new Fund("4", "Fundusz Zagraniczny 2", Kind.FOREIGN));
         funds.add(new Fund("5", "Fundusz Zagraniczny 3", Kind.FOREIGN));
-        funds.add(new Fund("6", "Fundusz Zagraniczny 3", Kind.FOREIGN));
-        funds.add(new Fund("7", "Fundusz Zagraniczny 3", Kind.FOREIGN));
+        funds.add(new Fund("6", "Fundusz Zagraniczny 4", Kind.FOREIGN));
+        funds.add(new Fund("7", "Fundusz Zagraniczny 5", Kind.FOREIGN));
 
         funds.add(new Fund("8", "Fundusz Pieniężny 1", Kind.FINANCIAL));
+
+        return funds;
+    }
+
+    public static List<Fund> getFunds3() {
+        List<Fund> funds = new LinkedList<>();
+
+        funds.add(new Fund("PL1", "Fundusz Polski 1", Kind.POLISH));
+        funds.add(new Fund("PL2", "Fundusz Polski 2", Kind.POLISH));
+        funds.add(new Fund("PL3", "Fundusz Polski 3", Kind.POLISH));
+
+        funds.add(new Fund("FO1", "Fundusz Zagraniczny 1", Kind.FOREIGN));
+        funds.add(new Fund("FO2", "Fundusz Zagraniczny 2", Kind.FOREIGN));
+
+        funds.add(new Fund("FI1", "Fundusz Pieniężny 1", Kind.FINANCIAL));
 
         return funds;
     }

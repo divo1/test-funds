@@ -5,25 +5,24 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import pl.net.divo.funds.Fund;
-import pl.net.divo.parameters.aggressive.Funds;
-import pl.net.divo.parameters.aggressive.Percentages;
-import pl.net.divo.strategy.AggressiveInvestStrategy;
+import pl.net.divo.parameters.safe.Funds;
+import pl.net.divo.parameters.safe.Percentages;
 import pl.net.divo.strategy.InvestStrategy;
+import pl.net.divo.strategy.SafeInvestStrategy;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(Parameterized.class)
-public class AggresiveInvestStrategyTest {
+public class Stage2SafeInvestStrategyTest {
     private InvestStrategy strategy;
 
     private List<Fund> funds = new LinkedList<>();
     private Map<String, Double> acceptedPercentages = new HashMap<>();
 
-    public AggresiveInvestStrategyTest(List<Fund> funds, Map<String, Double> acceptedPercentages) {
+    public Stage2SafeInvestStrategyTest(List<Fund> funds, Map<String, Double> acceptedPercentages) {
         this.funds = funds;
         this.acceptedPercentages = acceptedPercentages;
     }
@@ -31,14 +30,13 @@ public class AggresiveInvestStrategyTest {
     @Parameterized.Parameters(name="Checking: {index}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
-                { Funds.getFunds1(), Percentages.getPercentages1() },
-                { Funds.getFunds2(), Percentages.getPercentages2() },
+                { Funds.getFunds3(), Percentages.getPercentages3() },
         });
     }
 
     @Before
     public void prepareStrategy() {
-        strategy = new AggressiveInvestStrategy(funds);
+        strategy = new SafeInvestStrategy(funds);
     }
 
     @Test
@@ -54,9 +52,8 @@ public class AggresiveInvestStrategyTest {
     }
 
     @Test
-    public void testSafeInvest() {
+    public void testSafeInvest100() {
         Map<Fund, Double> percentages = strategy.getPercentages();
-        Map<String, Double> parsedPercentage = percentages.entrySet().stream().collect(Collectors.toMap(e -> e.getKey().getID(), Map.Entry::getValue));
-        assertEquals(parsedPercentage, acceptedPercentages);
+        assertEquals(100, percentages.entrySet().stream().mapToDouble(f -> f.getValue()).sum(), 0.009);
     }
 }

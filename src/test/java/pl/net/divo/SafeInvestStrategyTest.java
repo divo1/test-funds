@@ -10,6 +10,7 @@ import pl.net.divo.parameters.safe.Percentages;
 import pl.net.divo.strategy.InvestStrategy;
 import pl.net.divo.strategy.SafeInvestStrategy;
 
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -57,6 +58,6 @@ public class SafeInvestStrategyTest {
     public void testSafeInvest() {
         Map<Fund, Double> percentages = strategy.getPercentages();
         Map<String, Double> parsedPercentage = percentages.entrySet().stream().collect(Collectors.toMap(e -> e.getKey().getID(), Map.Entry::getValue));
-        assertEquals(parsedPercentage, acceptedPercentages);
+        assertEquals(acceptedPercentages, parsedPercentage);
     }
 }

@@ -5,11 +5,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import pl.net.divo.funds.Fund;
-import pl.net.divo.parameters.balanced.Funds;
-import pl.net.divo.parameters.balanced.Percentages;
-import pl.net.divo.strategy.BalancedInvestStrategy;
+import pl.net.divo.parameters.aggressive.Funds;
+import pl.net.divo.parameters.aggressive.Percentages;
+import pl.net.divo.strategy.AggressiveInvestStrategy;
 import pl.net.divo.strategy.InvestStrategy;
 
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -17,13 +18,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(Parameterized.class)
-public class BalancedInvestStrategyTest {
+public class AggressiveInvestStrategyTest {
     private InvestStrategy strategy;
 
     private List<Fund> funds = new LinkedList<>();
     private Map<String, Double> acceptedPercentages = new HashMap<>();
 
-    public BalancedInvestStrategyTest(List<Fund> funds, Map<String, Double> acceptedPercentages) {
+    public AggressiveInvestStrategyTest(List<Fund> funds, Map<String, Double> acceptedPercentages) {
         this.funds = funds;
         this.acceptedPercentages = acceptedPercentages;
     }
@@ -38,7 +39,7 @@ public class BalancedInvestStrategyTest {
 
     @Before
     public void prepareStrategy() {
-        strategy = new BalancedInvestStrategy(funds);
+        strategy = new AggressiveInvestStrategy(funds);
     }
 
     @Test

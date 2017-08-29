@@ -16,9 +16,9 @@ public class SafeInvestStrategy extends InvestStrategy {
     @Override
     public Map<Kind, Double> investStyle() {
         Map<Kind, Double> style = new HashMap<>();
-        style.put(Kind.POLISH, 0.20);
-        style.put(Kind.FOREIGN, 0.75);
-        style.put(Kind.FINANCIAL, 0.05);
+        style.put(Kind.POLISH, 20.0);
+        style.put(Kind.FOREIGN, 75.0);
+        style.put(Kind.FINANCIAL, 5.0);
 
         return style;
     }

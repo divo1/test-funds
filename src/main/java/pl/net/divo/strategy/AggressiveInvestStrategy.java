@@ -16,9 +16,9 @@ public class AggressiveInvestStrategy extends InvestStrategy {
     @Override
     public Map<Kind, Double> investStyle() {
         Map<Kind, Double> style = new HashMap<>();
-        style.put(Kind.POLISH, 0.40);
-        style.put(Kind.FOREIGN, 0.20);
-        style.put(Kind.FINANCIAL, 0.40);
+        style.put(Kind.POLISH, 40.0);
+        style.put(Kind.FOREIGN, 20.0);
+        style.put(Kind.FINANCIAL, 40.0);
 
         return style;
     }
