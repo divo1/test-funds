@@ -9,9 +9,9 @@ public class Amounts {
         Map<String, BigDecimal> percentages = new HashMap<>();
         percentages.put("PL1", new BigDecimal(1000.0));
         percentages.put("PL2", new BigDecimal(1000.0));
+        percentages.put("FO1", new BigDecimal(2500.0));
+        percentages.put("FO2", new BigDecimal(2500.0));
         percentages.put("FO3", new BigDecimal(2500.0));
-        percentages.put("FO4", new BigDecimal(2500.0));
-        percentages.put("FO5", new BigDecimal(2500.0));
         percentages.put("FI1", new BigDecimal( 500.0));
 
         return percentages;

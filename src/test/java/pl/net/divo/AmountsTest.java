@@ -1,6 +1,5 @@
 package pl.net.divo;
 
-import org.hamcrest.core.Is;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,15 +13,13 @@ import pl.net.divo.strategy.SafeInvestStrategy;
 
 import java.math.BigDecimal;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
 
 @RunWith(Parameterized.class)
 public class AmountsTest {
-    private BigDecimal totalAmount = new BigDecimal(10.000);
+    private BigDecimal totalAmount = new BigDecimal(10000);
     private Map<Fund, BigDecimal> amounts;
 
     private List<Fund> funds = new LinkedList<>();
@@ -60,7 +57,6 @@ public class AmountsTest {
 
     @Test
     public void testSafeInvest() {
-        Map<String, BigDecimal> parsedPercentage = amounts.entrySet().stream().collect(Collectors.toMap(e -> e.getKey().getID(), Map.Entry::getValue));
-        assertThat(parsedPercentage, Is.is(expectedAmounts));
+        assertEquals(totalAmount, amounts.values().stream().reduce(BigDecimal.ZERO, BigDecimal::add));
     }
 }
